@@ -38,7 +38,12 @@ class PMGDSDataFetcher:
             }
         )
         units_df = units_df.rename(
-            columns={"id": "UnitID", "id_central": "PlantID", "nombre": "UnitName"}
+            columns={
+                "id": "UnitID",
+                "id_central": "PlantID",
+                "nombre": "UnitName",
+                "tipo_tecnologia_nombre": "TechTypeName",
+            }
         )
         agents_df = agents_df.rename(columns={"id": "AgentID"})
 
@@ -58,15 +63,16 @@ class PMGDSDataFetcher:
         )
 
         # --- Filter PMGD ---
-        distr_plants_df = plants_df[
-            plants_df["PlantName"].str.contains("PMGD ", case=False, na=False)
+        distr_units_df = units_df[
+            units_df["PlantName"].str.contains("PMGD ", case=False, na=False)
+            & units_df["TechTypeName"].isin(["Fotovoltaica", "Eólica"])
         ]
 
-        return agents_df, plants_df, units_df, distr_plants_df
+        return distr_units_df
 
     def save_to_excel(
         self,
-        units_df: pd.DataFrame,
+        distr_units_df: pd.DataFrame,
         file="output.xlsx",
     ):
         """Export all DataFrames to Excel with selected columns."""
@@ -75,13 +81,17 @@ class PMGDSDataFetcher:
             "UnitID",
             "UnitName",
             "PlantName",
+            "TechTypeName",
             "AgentName",
             "reuc_id",
         ]
 
         with pd.ExcelWriter(file, engine="openpyxl") as writer:
-            units_df[fields_to_save].to_excel(
+            distr_units_df[fields_to_save].to_excel(
                 writer, sheet_name="GeneratingUnit", index=False
+            )
+            distr_units_df.to_excel(
+                writer, sheet_name="GeneratingUnitFull", index=False
             )
 
         print(f"Excel file saved as {file}")
@@ -98,9 +108,7 @@ if __name__ == "__main__":
     agents_df, plants_df, units_df = fetcher.fetch_all()
 
     # Step 2: clean, merge, filter
-    agents_df, plants_df, units_df, distr_plants_df = fetcher.process_data(
-        agents_df, plants_df, units_df
-    )
+    distr_units_df = fetcher.process_data(agents_df, plants_df, units_df)
 
     # Step 3: export to Excel
-    fetcher.save_to_excel(units_df)
+    fetcher.save_to_excel(distr_units_df)
