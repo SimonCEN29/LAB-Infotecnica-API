@@ -39,25 +39,28 @@ class PMGDSDataFetcher:
         )
         units_df = units_df.rename(
             columns={
-                "id": "UnitID",
+                "id": "GeneratingUnitID",
                 "id_central": "PlantID",
                 "nombre": "UnitName",
                 "tipo_tecnologia_nombre": "TechTypeName",
             }
         )
-        agents_df = agents_df.rename(columns={"id": "AgentID"})
+        agents_df = agents_df.rename(
+            columns={
+                "id": "AgentID",
+                "nombre": "ReucName"})
 
-        # --- Extract reuc_id ---
-        agents_df["reuc_id"] = agents_df["descripcion"].str.split("_").str[-1]
+        # --- Extract ReucID ---
+        agents_df["ReucID"] = agents_df["descripcion"].str.split("_").str[-1]
 
         # --- Merge into plants ---
         plants_df = plants_df.merge(
-            agents_df[["AgentID", "reuc_id"]],
+            agents_df[["AgentID", "ReucID","ReucName"]],
             on="AgentID",
             how="left",
         )
         units_df = units_df.merge(
-            plants_df[["PlantID", "AgentID", "reuc_id", "PlantName", "AgentName"]],
+            plants_df[["PlantID", "AgentID", "ReucID", "ReucName", "PlantName", "AgentName"]],
             on="PlantID",
             how="left",
         )
@@ -73,17 +76,18 @@ class PMGDSDataFetcher:
     def save_to_excel(
         self,
         distr_units_df: pd.DataFrame,
-        file="output.xlsx",
+        file="Infotecnica_API_PMGD_output.xlsx",
     ):
         """Export all DataFrames to Excel with selected columns."""
 
         fields_to_save = [
-            "UnitID",
+            "GeneratingUnitID",
             "UnitName",
             "PlantName",
             "TechTypeName",
             "AgentName",
-            "reuc_id",
+            "ReucID",
+            "ReucName"
         ]
 
         with pd.ExcelWriter(file, engine="openpyxl") as writer:
