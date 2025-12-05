@@ -90,9 +90,9 @@ class PMGDSDataFetcher:
             distr_units_df[fields_to_save].to_excel(
                 writer, sheet_name="GeneratingUnit", index=False
             )
-            distr_units_df.to_excel(
-                writer, sheet_name="GeneratingUnitFull", index=False
-            )
+            # distr_units_df.to_excel(
+            #     writer, sheet_name="GeneratingUnitFull", index=False
+            # )
 
         print(f"Excel file saved as {file}")
 
