@@ -59,11 +59,11 @@ for index, row in distr_units_df.iterrows():
         distr_units_df.at[index, "reuc_id"] = reuc_new_id
         distr_units_df.at[index, "reuc_name"] = reuc_new_name.values[0]
 
-        print(f"Unit {row['UnitID']} is under REUC substitution.")
+        print(f"Unit {row['GeneratingUnitID']} is under REUC substitution.")
 
 distr_units_df["reuc_id"] = pd.to_numeric(
     distr_units_df["reuc_id"], errors="coerce"
-).astype("Int64")
+).astype("int64")
 
 
 distr_units_df.drop(

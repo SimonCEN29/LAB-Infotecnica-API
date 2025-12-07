@@ -39,7 +39,7 @@ class PMGDSDataFetcher:
         )
         units_df = units_df.rename(
             columns={
-                "id": "UnitID",
+                "id": "GeneratingUnitID",
                 "id_central": "PlantID",
                 "nombre": "UnitName",
                 "tipo_tecnologia_nombre": "TechTypeName",
@@ -69,7 +69,7 @@ class PMGDSDataFetcher:
         ]
 
         fields_to_save = [
-            "UnitID",
+            "GeneratingUnitID",
             "UnitName",
             "PlantName",
             "TechTypeName",
@@ -87,7 +87,7 @@ class PMGDSDataFetcher:
         """Export all DataFrames to Excel with selected columns."""
 
         fields_to_save = [
-            "UnitID",
+            "GeneratingUnitID",
             "UnitName",
             "PlantName",
             "TechTypeName",
