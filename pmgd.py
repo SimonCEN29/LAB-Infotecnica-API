@@ -68,7 +68,16 @@ class PMGDSDataFetcher:
             & units_df["TechTypeName"].isin(["Fotovoltaica", "Eólica"])
         ]
 
-        return distr_units_df
+        fields_to_save = [
+            "UnitID",
+            "UnitName",
+            "PlantName",
+            "TechTypeName",
+            "AgentName",
+            "reuc_id",
+        ]
+
+        return distr_units_df[fields_to_save]
 
     def save_to_excel(
         self,
@@ -110,5 +119,7 @@ if __name__ == "__main__":
     # Step 2: clean, merge, filter
     distr_units_df = fetcher.process_data(agents_df, plants_df, units_df)
 
-    # Step 3: export to Excel
-    fetcher.save_to_excel(distr_units_df)
+    print(distr_units_df.head())
+
+    # # Step 3: export to Excel
+    # fetcher.save_to_excel(distr_units_df)
