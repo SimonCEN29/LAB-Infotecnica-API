@@ -72,11 +72,75 @@ class REUCDataProcessor:
 
         return agents_df, substitutions_df
 
+    def get_agents_after_substitution(
+        self, agents_df: pd.DataFrame, substitutions_df: pd.DataFrame
+    ):
+        # Create a new DataFrame with agents with their substitutions,
+        # only when datetime.today() is within the substitution period.
+        from datetime import datetime
+
+        updated_agents_df = agents_df.copy()
+
+        for index, row in updated_agents_df.iterrows():
+            reuc_id = row["reuc_id"]
+            substitution_rows = substitutions_df[
+                substitutions_df["reuc_old_id"] == reuc_id
+            ]
+
+            for _, sub_row in substitution_rows.iterrows():
+                replacement_start = sub_row["ReplacementStartDate"]
+                replacement_end = sub_row["ReplacementEndDate"]
+
+                if (
+                    datetime.today() >= replacement_start
+                    and datetime.today() <= replacement_end
+                ):
+                    reuc_new_id = sub_row["reuc_new_id"]
+                    reuc_new_name = sub_row["reuc_new_name"]
+
+                    updated_agents_df.at[index, "reuc_id"] = reuc_new_id
+                    updated_agents_df.at[index, "reuc_name"] = reuc_new_name
+
+                    print(f"Agent {row['reuc_name']} is under REUC substitution.")
+
+        return updated_agents_df
+
+    def get_pmgd_agents(self, agents_df: pd.DataFrame) -> pd.DataFrame:
+        # Filter agents that contain "PMGD", within the string,  in the field "reuc_category"
+        pmgd_agents_df = agents_df[
+            agents_df["reuc_category"].str.contains("PMGD", case=False, na=False)
+        ].reset_index(drop=True)
+        return pmgd_agents_df
+
 
 if __name__ == "__main__":
-    processor = REUCDataProcessor(folder=Path("inputs"))
+    from datetime import datetime
+    import os
+
+    os.system("cls" if os.name == "nt" else "clear")
+
+    processor = REUCDataProcessor(folder=Path("input"))
 
     agents_df, substitutions_df = processor.load_reuc_data()
+    pmgd_agents_df = processor.get_pmgd_agents(agents_df)
 
-    print(substitutions_df.head())
-    print(agents_df.head())
+    updated_agents_df = processor.get_agents_after_substitution(
+        agents_df, substitutions_df
+    )
+
+    substitutions_file_path = Path(
+        f"output/substitutions at {datetime.today().strftime('%Y-%m-%d')}.xlsx"
+    )
+    agents_file_path = Path(
+        f"output/agents at {datetime.today().strftime('%Y-%m-%d')}.xlsx"
+    )
+    pmgd_agents_file_path = Path(
+        f"output/pmgd_agents at {datetime.today().strftime('%Y-%m-%d')}.xlsx"
+    )
+
+    substitutions_df.to_excel(substitutions_file_path, index=False)
+    agents_df.to_excel(agents_file_path, index=False)
+    pmgd_agents_df.to_excel(pmgd_agents_file_path, index=False)
+    print(f"\nSubstitutions saved to {substitutions_file_path}")
+    print(f"Agents saved to {agents_file_path}")
+    print(f"PMGD Agents saved to {pmgd_agents_file_path}\n")
