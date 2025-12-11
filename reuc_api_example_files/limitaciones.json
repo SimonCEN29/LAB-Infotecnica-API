@@ -1,0 +1,1952 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "neomante-api-limitation",
+    "description": "Limitation API",
+    "contact": {
+      "name": "Luis Nunez",
+      "email": "luis.nunez@coordinador.cl"
+    },
+    "license": {
+      "name": "Coordinador Electrico Nacional",
+      "url": "https://www.coordinador.cl"
+    },
+    "version": "1.0.6-RELEASE"
+  },
+  "servers": [
+    {
+      "url": "https://citizen-cen-api.apps.prod-os-1.coordinador.cl/neomante/limitaciones",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Api-Limitaciones",
+      "description": "API de acceso a las limitaciones del aplicativo Neomante."
+    }
+  ],
+  "paths": {
+    "/v2": {
+      "get": {
+        "tags": [
+          "Api-Limitaciones"
+        ],
+        "summary": "Obtener listado de limitaciones",
+        "description": "Obtiene el listado de limitaciones por su estado y tipo.",
+        "operationId": "findLimitationByFilter",
+        "parameters": [
+          {
+              "name": "user_key",
+              "in": "query",
+              "description": "Ingrese su User Key Personal",
+              "required": true,
+              "schema": {
+                  "type": "string"
+              }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cid\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "correlativo",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccorrelativo\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "correlativoAsociadoPrefijo",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccorrelativoAsociadoPrefijo\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "correlativoAsociado",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccorrelativoAsociado\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCorrelativoAsociado",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidCorrelativoAsociado\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCorrelativoAsociadoIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "casoCorrelativoAsociado",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccasoCorrelativoAsociado\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "casoCorrelativoAsociadoIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cstatus\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "statusIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "statusNe",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cstatus\u201d no sea igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ctype\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "typeIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idEmpresa",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidEmpresa\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idEmpresaIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idUnidad",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidUnidad\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCentral",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidCentral\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idSubestacion",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidSubestacion\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idLinea",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cidLinea\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "elementoATrabajar",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201celementoATrabajar\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "elementoATrabajarIn",
+            "in": "query",
+            "description": "M\u00faltiples valores separados por comas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afectaSscc",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cafectaSscc\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccreated\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdLt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccreated\u201d sea menor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdLte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccreated\u201d sea menor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdGt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccreated\u201d sea mayor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdGte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201ccreated\u201d sea mayor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaPerturbacion",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaPerturbacion\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaPerturbacionLt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaPerturbacion\u201d sea menor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaPerturbacionLte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaPerturbacion\u201d sea menor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaPerturbacionGt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaPerturbacion\u201d sea mayor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaPerturbacionGte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaPerturbacion\u201d sea mayor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaRetornoEstimada",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaRetornoEstimada\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaRetornoEstimadaLt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaRetornoEstimada\u201d sea menor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaRetornoEstimadaLte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaRetornoEstimada\u201d sea menor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaRetornoEstimadaGt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaRetornoEstimada\u201d sea mayor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaRetornoEstimadaGte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaRetornoEstimada\u201d sea mayor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaEfectivaRetorno",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaEfectivaRetorno\u201d es igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaEfectivaRetornoLt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaEfectivaRetorno\u201d sea menor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaEfectivaRetornoLte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaEfectivaRetorno\u201d sea menor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaEfectivaRetornoGt",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaEfectivaRetorno\u201d sea mayor a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaEfectivaRetornoGte",
+            "in": "query",
+            "description": "Mostrar registros en los cuales \u201cfechaEfectivaRetorno\u201d sea mayor o igual a este valor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ordering",
+            "in": "query",
+            "description": "Qu\u00e9 campo usar para ordenar los resultados. (id, correlativo, empresaNombre, fechaPerturbacion)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Cantidad de elementos por p\u00e1gina",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "N\u00famero de p\u00e1gina.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseLimitationDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "AffectedSscDto": {
+        "type": "object",
+        "properties": {
+          "condicion": {
+            "type": "string"
+          },
+          "comentario": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          },
+          "afectacion": {
+            "type": "string"
+          },
+          "afectaSiNo": {
+            "type": "string"
+          }
+        }
+      },
+      "CompanyDocDto": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "empresaDescription": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "empresaNumero": {
+            "type": "string"
+          },
+          "giroNombre": {
+            "type": "string"
+          },
+          "grupoNombre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idGiro": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idGrupo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ComunityDocDto": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "idComuna": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idRegion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "EffectiveOperationalStateDocDto": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "created": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "modules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "LimitationCentralDocDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "centralDescripcion": {
+            "type": "string"
+          },
+          "centralNemoTechnical": {
+            "type": "string"
+          },
+          "centralNombre": {
+            "type": "string"
+          },
+          "centralNumero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "centralTipoNemo": {
+            "type": "string"
+          },
+          "centralTipoName": {
+            "type": "string"
+          },
+          "comunaNombre": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "fuenteEnergiaNemo": {
+            "type": "string"
+          },
+          "fuenteEnergiaNombre": {
+            "type": "string"
+          },
+          "idCentral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCentralTipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idComuna": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idFuente": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idLocalidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "localidadNombre": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "LimitationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comentarioFechaRetorno": {
+            "type": "string"
+          },
+          "correlativo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentNode": {
+            "type": "string"
+          },
+          "docCentral": {
+            "$ref": "#/components/schemas/LimitationCentralDocDto"
+          },
+          "docComuna": {
+            "$ref": "#/components/schemas/ComunityDocDto"
+          },
+          "docEmpresa": {
+            "$ref": "#/components/schemas/CompanyDocDto"
+          },
+          "docEstadoOperativo": {
+            "$ref": "#/components/schemas/OperationalStateDocDto"
+          },
+          "docEstadoOperativoEfectivo": {
+            "$ref": "#/components/schemas/EffectiveOperationalStateDocDto"
+          },
+          "docLinea": {
+            "$ref": "#/components/schemas/LineDocDto"
+          },
+          "docSubestacion": {
+            "$ref": "#/components/schemas/SubStationDocDto"
+          },
+          "docTipoTrabajo": {
+            "$ref": "#/components/schemas/WorkTypeDocDto"
+          },
+          "docUnidad": {
+            "$ref": "#/components/schemas/UnityDocDto"
+          },
+          "docUser": {
+            "$ref": "#/components/schemas/UserDocDto"
+          },
+          "estadoOperativo": {
+            "type": "string"
+          },
+          "estadoOperativoEfectivo": {
+            "type": "string"
+          },
+          "fechaEfectivaRetorno": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaPerturbacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaRetornoEstimada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idCentral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCompany": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idLinea": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUnidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUser": {
+            "type": "string"
+          },
+          "indisponeCentralCompleta": {
+            "type": "boolean"
+          },
+          "modified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "potencia": {
+            "type": "number",
+            "format": "double"
+          },
+          "seccionesTramosRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationSectionSectionAnwserDto"
+            }
+          },
+          "status": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "unidadMediaPotencia": {
+            "type": "string"
+          },
+          "unidadesDeElementoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationElementResponseUnitDto"
+            }
+          },
+          "unidadesDePanoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationPlaneResponseUnitDto"
+            }
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zonaHorariaGmt3": {
+            "type": "boolean"
+          },
+          "zonaHorariaGmt4": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSeccionTramo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSubestacion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "representante": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idComuna": {
+            "type": "string"
+          },
+          "fechaEfectivaRetornoGmt": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comentarioAnulacion": {
+            "type": "string"
+          },
+          "unidadMedidaPotencia": {
+            "type": "string"
+          },
+          "indisponibilidadAsociadaRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponseAssociatedUnavailabilityDto"
+            }
+          },
+          "correlativoAsociado": {
+            "type": "string"
+          },
+          "idCorrelativoAsociado": {
+            "type": "string"
+          },
+          "casoCorrelativoAsociado": {
+            "type": "string"
+          },
+          "correlativoAsociadoPrefijo": {
+            "type": "string"
+          },
+          "afectaSscc": {
+            "type": "boolean"
+          },
+          "ssccAfectados": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AffectedSscDto"
+            }
+          },
+          "elementoATrabajar": {
+            "type": "string"
+          },
+          "produce_indisponibilidad": {
+            "type": "boolean"
+          },
+          "usaPanoCompleto": {
+            "type": "boolean"
+          },
+          "servicioComplementario": {
+            "type": "string"
+          },
+          "servicioComplementarioRespaldo": {
+            "type": "string"
+          },
+          "unidadesdeRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponseUnity"
+            }
+          },
+          "statusHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusHistoryDto"
+            }
+          }
+        }
+      },
+      "LimitationElementResponseUnitDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/LimitationMetadataPlaneUnitResponseDto"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "LimitationMetadataPlaneUnitResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descripcionBarra": {
+            "type": "string"
+          },
+          "barraNemoTecnico": {
+            "type": "string"
+          },
+          "barraNombre": {
+            "type": "string"
+          },
+          "barraNumero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "conductorTipoNombre": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "idBarra": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idConductorTipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idConexion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idInterruptor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSubestation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idTransformador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "interruptorDescripcion": {
+            "type": "string"
+          },
+          "interruptorNemoTecnico": {
+            "type": "string"
+          },
+          "interruptorNombre": {
+            "type": "string"
+          },
+          "interruptorNumero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "panoNemoTecnico": {
+            "type": "string"
+          },
+          "panoNombre": {
+            "type": "string"
+          },
+          "subestacionNombre": {
+            "type": "string"
+          },
+          "subestacionNemoTecnico": {
+            "type": "string"
+          },
+          "transformadorDescripcion": {
+            "type": "string"
+          },
+          "transformadorNemoTecnico": {
+            "type": "string"
+          },
+          "transformadorNombre": {
+            "type": "string"
+          },
+          "transformadorNumero": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "LimitationMetadataSectionSectionAnwserDto": {
+        "type": "object",
+        "properties": {
+          "circuitoNemoTecnico": {
+            "type": "string"
+          },
+          "circuitoNombre": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCompany": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idLine": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSeccionTramo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idTramo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineaNemoTecnico": {
+            "type": "string"
+          },
+          "lineaNombre": {
+            "type": "string"
+          },
+          "lineaNumero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "seccionTramoNemoTecnico": {
+            "type": "string"
+          },
+          "seccionTramoNombre": {
+            "type": "string"
+          },
+          "seccionTramoSegmentoDescripcion": {
+            "type": "string"
+          },
+          "seccionTramoSegmentoInicioKm": {
+            "type": "number",
+            "format": "double"
+          },
+          "seccionTramoSegmentoNemoTecnico": {
+            "type": "string"
+          },
+          "seccionTramoSegmentoNombre": {
+            "type": "string"
+          },
+          "seccionTramoSegmentoNumero": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "LimitationPlaneResponseUnitDto": {
+        "type": "object",
+        "properties": {
+          "consumo": {
+            "type": "string"
+          },
+          "fechaNormalizacion": {
+            "type": "string"
+          },
+          "fechaPerturbacion": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "interruptor": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "proteccionAlarmaOperada": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "LimitationSectionSectionAnwserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/LimitationMetadataSectionSectionAnwserDto"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "LineDocDto": {
+        "type": "object",
+        "properties": {
+          "controladorNemoTecnico": {
+            "type": "string"
+          },
+          "controladorNombre": {
+            "type": "string"
+          },
+          "coordinadorNemoTecnico": {
+            "type": "string"
+          },
+          "coordinadorNombre": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idControl": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCoordinador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idLinea": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineaDescripcion": {
+            "type": "string"
+          },
+          "lineaNemoTecnico": {
+            "type": "string"
+          },
+          "lineaNombre": {
+            "type": "string"
+          },
+          "lineaNumero": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataAssociatedUnavailabilityDto": {
+        "type": "object",
+        "properties": {
+          "empresaNombre": {
+            "type": "string"
+          },
+          "idControl": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineaNumero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineaNombre": {
+            "type": "string"
+          },
+          "idEmpresa": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "lineaDescripcion": {
+            "type": "string"
+          },
+          "controladorNemotecnico": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "idLinea": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empresaNemotecnico": {
+            "type": "string"
+          },
+          "lineaNemotecnico": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "coordinadorNombre": {
+            "type": "string"
+          },
+          "idCoordinador": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "controladorNombre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "coordinadorNemotecnico": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataResponseUnity": {
+        "type": "object",
+        "properties": {
+          "idUnityTurbineBrand": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nameCloth": {
+            "type": "string"
+          },
+          "mnemonicCentral": {
+            "type": "string"
+          },
+          "idFuel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUnityTurbineType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mnemonicUnity": {
+            "type": "string"
+          },
+          "nameCompany": {
+            "type": "string"
+          },
+          "nameFuel": {
+            "type": "string"
+          },
+          "nameBrandTurbine": {
+            "type": "string"
+          },
+          "mnemonicCloth": {
+            "type": "string"
+          },
+          "mnemonicCompany": {
+            "type": "string"
+          },
+          "unityDescription": {
+            "type": "string"
+          },
+          "nameCentral": {
+            "type": "string"
+          },
+          "idUnity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "turbineTypeName": {
+            "type": "string"
+          },
+          "idCentral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberUnity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupName": {
+            "type": "string"
+          },
+          "idConnection1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idConnection2": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "nameUnity": {
+            "type": "string"
+          },
+          "netPower": {
+            "type": "number",
+            "format": "double"
+          },
+          "idCompany": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isCritic": {
+            "type": "boolean"
+          }
+        }
+      },
+      "OperationalStateDocDto": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "created": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "modules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseAssociatedUnavailabilityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/MetadataAssociatedUnavailabilityDto"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseUnity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/MetadataResponseUnity"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "StatusHistoryDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "docUser": {
+            "$ref": "#/components/schemas/UserDocDto"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateTime": {
+            "type": "string"
+          }
+        }
+      },
+      "SubStationDocDto": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "flagEquipoCom": {
+            "type": "boolean"
+          },
+          "flagPararrayos": {
+            "type": "boolean"
+          },
+          "flagScada": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idPropietario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idSubestacion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subestacionDescripcion": {
+            "type": "string"
+          },
+          "subestationNemoTecnico": {
+            "type": "string"
+          },
+          "subestacionNombre": {
+            "type": "string"
+          }
+        }
+      },
+      "UnityDocDto": {
+        "type": "object",
+        "properties": {
+          "centralNemoTechnical": {
+            "type": "string"
+          },
+          "centralNombre": {
+            "type": "string"
+          },
+          "combustibleNombre": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "empresaNemoTecnico": {
+            "type": "string"
+          },
+          "empresaNombre": {
+            "type": "string"
+          },
+          "esCritica": {
+            "type": "boolean"
+          },
+          "grupoNombre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCentral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCombustible": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idConexion1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idConexion2": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUnidadTurbinaMarca": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUnidadTurbinaTipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "panoNemoTecnico": {
+            "type": "string"
+          },
+          "panoNombre": {
+            "type": "string"
+          },
+          "potenciaNeta": {
+            "type": "number",
+            "format": "double"
+          },
+          "turbinaMarcaNombre": {
+            "type": "string"
+          },
+          "turbinaTipoNombre": {
+            "type": "string"
+          },
+          "unidadDescripcion": {
+            "type": "string"
+          },
+          "unidadNemoTecnico": {
+            "type": "string"
+          },
+          "unidadNombre": {
+            "type": "string"
+          },
+          "unidadNumero": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UserDocDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          }
+        }
+      },
+      "WorkTypeDocDto": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "created": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "modified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PagedResponseLimitationDto": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationDto"
+            }
+          }
+        }
+      },
+      "LimitationLimitationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comentarioFechaRetorno": {
+            "type": "string"
+          },
+          "correlativo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentNode": {
+            "type": "string"
+          },
+          "docCentral": {
+            "$ref": "#/components/schemas/LimitationCentralDocDto"
+          },
+          "docComuna": {
+            "$ref": "#/components/schemas/ComunityDocDto"
+          },
+          "docEmpresa": {
+            "$ref": "#/components/schemas/CompanyDocDto"
+          },
+          "docEstadoOperativo": {
+            "$ref": "#/components/schemas/OperationalStateDocDto"
+          },
+          "docEstadoOperativoEfectivo": {
+            "$ref": "#/components/schemas/EffectiveOperationalStateDocDto"
+          },
+          "docLinea": {
+            "$ref": "#/components/schemas/LineDocDto"
+          },
+          "docSubestation": {
+            "$ref": "#/components/schemas/SubStationDocDto"
+          },
+          "docTipoTrabajo": {
+            "$ref": "#/components/schemas/WorkTypeDocDto"
+          },
+          "docUnidad": {
+            "$ref": "#/components/schemas/UnityDocDto"
+          },
+          "docUser": {
+            "$ref": "#/components/schemas/UserDocDto"
+          },
+          "estadoOperativo": {
+            "type": "string"
+          },
+          "estadoOperativoEfectivo": {
+            "type": "string"
+          },
+          "fechaEfectivaRetorno": {
+            "type": "string"
+          },
+          "fechaPerturbacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaRetornoEstimada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idCentral": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCompany": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idLine": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUnidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUser": {
+            "type": "string"
+          },
+          "indisponeCentralCompleta": {
+            "type": "boolean"
+          },
+          "modified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observacion": {
+            "type": "string"
+          },
+          "potencia": {
+            "type": "number",
+            "format": "double"
+          },
+          "seccionesTramosRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationSectionSectionAnwserDto"
+            }
+          },
+          "status": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "afectaSscc": {
+            "type": "boolean"
+          },
+          "ssccAfectados": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AffectedSscDto"
+            }
+          },
+          "unidadMediaPotencia": {
+            "type": "string"
+          },
+          "unidadesDeElementoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationElementResponseUnitDto"
+            }
+          },
+          "unidadesDePanoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationPlaneResponseUnitDto"
+            }
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zonaHorariaGmt3": {
+            "type": "boolean"
+          },
+          "zonaHorariaGmt4": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PagedResponseLimitationLimitationDto": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitationLimitationDto"
+            }
+          }
+        }
+      },
+      "ResponseDto": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

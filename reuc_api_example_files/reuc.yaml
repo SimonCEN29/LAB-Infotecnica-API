@@ -1,0 +1,155 @@
+---
+openapi: 3.0.3
+info:
+  title: REUC API
+  description: Informaciï¿½n de Usuarios Coordinados
+  contact:
+    name: API Support
+    url: https://www.coordinador.cl
+    email: soporte@coordinador.cl
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://citizen-cen-api.apps.prod-os-1.coordinador.cl/reuc
+    description: Ambiente de producción
+tags:
+- name: ReucCoordinados
+  description: Api que expone la información de coordinados de REUC
+paths:
+  /v1/coordinados:
+    get:
+      tags:
+      - ReucCoordinados
+      summary: Get Coordinados
+      description: Retorna los Coordinados
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          format: string
+          type: string
+      responses:
+        "200":
+          description: OK
+  /v1/empresas/{idReuc}:
+    get:
+      tags:
+      - ReucCoordinados
+      summary: Get empresa Reuc por ID
+      description: Retorna una Empresa Reuc Por ID
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          format: string
+          type: string
+      - name: idReuc
+        in: path
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    ContactoFullDTO:
+      type: object
+      properties:
+        nombre:
+          type: string
+        mail:
+          type: string
+        telefono:
+          type: string
+        direccion:
+          type: string
+        comuna:
+          type: string
+    ContactoLiteDTO:
+      type: object
+      properties:
+        nombre:
+          type: string
+        mail:
+          type: string
+    EmpresaCoordinadoReucDTO:
+      description: DTO que representa a un coordinador del sistema
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        activa:
+          type: boolean
+        razonSocial:
+          type: string
+        nombreFantasia:
+          type: string
+        rut:
+          type: string
+        gerente:
+          $ref: "#/components/schemas/ContactoFullDTO"
+        titular:
+          $ref: "#/components/schemas/ContactoLiteDTO"
+        suplente:
+          $ref: "#/components/schemas/ContactoLiteDTO"
+        facturacion:
+          $ref: "#/components/schemas/ContactoLiteDTO"
+        subcategorias:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubcategoriaDTO"
+        reemplazoId:
+          format: int32
+          type: integer
+    EmpresaReucDTO:
+      description: DTO que representa a una empresa reuc
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        activa:
+          type: boolean
+        razonSocial:
+          type: string
+        nombreFantasia:
+          type: string
+        rut:
+          type: string
+        tipo:
+          format: int32
+          type: integer
+        descripcionTipo:
+          type: string
+        gerente:
+          $ref: "#/components/schemas/ContactoFullDTO"
+        titular:
+          $ref: "#/components/schemas/ContactoFullDTO"
+        suplente:
+          $ref: "#/components/schemas/ContactoFullDTO"
+        facturacion:
+          $ref: "#/components/schemas/ContactoFullDTO"
+        subcategorias:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubcategoriaDTO"
+        reemplazoId:
+          format: int32
+          type: integer
+        reemplazo:
+          $ref: "#/components/schemas/EmpresaReucDTO"
+    SubcategoriaDTO:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
