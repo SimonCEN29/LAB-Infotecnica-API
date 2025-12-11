@@ -12,7 +12,7 @@ class PMGDSDataFetcher:
 
     def fetch_json(self, url):
         """Download JSON with error handling."""
-        resp = requests.get(url)
+        resp = requests.get(url, verify=False, timeout=30)  # 👈 OJO: verify=False
         resp.raise_for_status()
         return resp.json()
 
